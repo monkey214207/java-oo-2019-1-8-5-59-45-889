@@ -21,10 +21,19 @@ public class Klass {
     }
 
     public void assignLeader(Student leader) {
-        this.leader = leader;
+        if(leader.getKlass().getNumber() == number){
+            this.leader = leader;
+        }
+        else{
+            System.out.print("It is not one of us.\n");
+        }
     }
 
     public Student getLeader() {
         return leader;
+    }
+
+    public void appendMember(Student student) {
+        student.getKlass().setNumber(number);
     }
 }

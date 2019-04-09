@@ -37,17 +37,17 @@ public class Teacher extends Person{
         }
         else{
             String classesString = "";
-            for (int i = 0; i < classes.size()-1; i++) {
-                classesString += classes.get(i).getNumber();
+            for (Klass k:classes) {
+                classesString += k.getNumber();
                 classesString += ", ";
             }
-            classesString += classes.get(classes.size()-1).getNumber();
+            classesString = classesString.substring(0,classesString.length() - 2);
             return super.introduce()+" I am a Teacher. I teach Class "+classesString+".";
         }
     }
 
     public String introduceWith(Student student) {
-        if(klass.getNumber() == student.getKlass().getNumber()){
+        if(this.isTeaching(student)){
             return super.introduce()+" I am a Teacher. I teach "+student.getName()+".";
         }
         else{
@@ -56,6 +56,11 @@ public class Teacher extends Person{
     }
 
     public boolean isTeaching(Student student) {
+        for (Klass k:classes){
+            if (k.isIn(student)){
+                return true;
+            }
+        }
         return false;
     }
 }

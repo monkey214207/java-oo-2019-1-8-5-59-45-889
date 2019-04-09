@@ -36,4 +36,8 @@ public class Klass {
     public void appendMember(Student student) {
         student.getKlass().setNumber(number);
     }
+
+    public boolean isIn(Student student) {
+        return number == student.getKlass().getNumber();
+    }
 }
